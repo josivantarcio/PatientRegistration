@@ -20,6 +20,7 @@ public class PatientEntity implements Serializable {
     private Integer age;
     private String email;
 
+    // varios pacientes para um medico
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     private DoctorEntity doctor;

@@ -22,7 +22,8 @@ public class DoctorEntity implements Serializable {
     private String telefone;
     private String crm;
 
-    @OneToMany
+    // um medico para varios pacientes
+    @OneToMany(mappedBy = "doctor")
     private List<PatientEntity> patients;
 
     public DoctorEntity() {
