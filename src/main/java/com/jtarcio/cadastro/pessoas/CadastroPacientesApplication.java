@@ -1,4 +1,4 @@
-package com.jtarcio.cadastropacientes;
+package com.jtarcio.cadastro.pessoas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

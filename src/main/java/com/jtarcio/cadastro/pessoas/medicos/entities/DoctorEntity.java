@@ -1,16 +1,16 @@
-package com.jtarcio.cadastropacientes.entities;
+package com.jtarcio.cadastro.pessoas.medicos.entities;
 
+import com.jtarcio.cadastro.pessoas.pacientes.entities.PatientEntity;
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
-import org.springframework.cglib.core.GeneratorStrategy;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_pacientes")
-public class PatientEntity implements Serializable {
+@Table(name = "tb_doctors")
+public class DoctorEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -18,20 +18,29 @@ public class PatientEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer age;
     private String email;
+    private String telefone;
+    private String crm;
 
-    public PatientEntity() {
+    @OneToMany
+    private List<PatientEntity> patients;
+
+    public DoctorEntity() {
     }
 
-    public PatientEntity(String name, Integer age, String email) {
+    public DoctorEntity(String name, String email, String telefone, String crm) {
         this.name = name;
-        this.age = age;
         this.email = email;
+        this.telefone = telefone;
+        this.crm = crm;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -42,14 +51,6 @@ public class PatientEntity implements Serializable {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -58,10 +59,30 @@ public class PatientEntity implements Serializable {
         this.email = email;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
+
+    public List<PatientEntity> getPatients() {
+        return patients;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        PatientEntity that = (PatientEntity) o;
+        DoctorEntity that = (DoctorEntity) o;
         return Objects.equals(id, that.id);
     }
 
@@ -72,11 +93,13 @@ public class PatientEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "PatientEntity{" +
+        return "DoctorEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", age=" + age +
                 ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", crm='" + crm + '\'' +
+                ", patients=" + patients +
                 '}';
     }
 }
