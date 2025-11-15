@@ -100,7 +100,6 @@ public class DoctorEntity implements Serializable {
                 ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", crm='" + crm + '\'' +
-                ", patients=" + patients +
                 '}';
     }
 }

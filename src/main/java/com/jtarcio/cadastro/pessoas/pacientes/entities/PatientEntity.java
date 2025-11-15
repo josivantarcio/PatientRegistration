@@ -29,6 +29,12 @@ public class PatientEntity implements Serializable {
     public PatientEntity() {
     }
 
+    public PatientEntity(String name, Integer age, String email) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+
     public PatientEntity(String name, Integer age, String email, DoctorEntity doctor) {
         this.name = name;
         this.age = age;
